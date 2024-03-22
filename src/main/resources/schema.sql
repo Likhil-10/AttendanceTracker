@@ -22,3 +22,10 @@ create table if not exists student (
   gradedetails INT,
   FOREIGN KEY(gradedetails) REFERENCES grade(grade)
 );
+
+create table if not exists principal (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name varchar(255),
+  age INT,
+  principal_since varchar(255)
+);
