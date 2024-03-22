@@ -17,70 +17,7 @@ import com.example.attendancetracker.repositories.TeacherJpaRepository;
 
 @Service
 public class PrincipalServices {
-
-    @Autowired
-    private StudentJpaRepository studentJpaRepository;
-
-    public Student addStudent(Student st)
-    {
-        studentJpaRepository.save(st);
-        return st;
-    }
-    
-    public ArrayList<Student> getAllStudents()
-    {
-        List<Student> l=studentJpaRepository.findAll();
-        ArrayList<Student> al=new ArrayList<>(l);
-
-        return al;
-    }
-
-    public Student getStudentById(int studentid)
-    {
-        try{
-            Student st=studentJpaRepository.findById(studentid).get();
-            return st;
-        }
-        catch(Exception e)
-        {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No student with that ID");
-        }
-    }
-
-    public String removeStudent(int studentid)
-    {
-        try{
-            Student st=getStudentById(studentid);
-            String name=st.getName();
-            studentJpaRepository.deleteById(studentid);
-
-            return name+" is transferred";
-        }
-        catch(Exception e)
-        {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No student with that ID");
-        }
-    }
-
-    public Student updateStudent(int studentid, Student student)
-    {
-        try{
-            Student st=getStudentById(studentid);
-            if(student.getName()!=null) st.setName(student.getName());
-            if(student.getAge()!=0) st.setAge(student.getAge());
-
-            studentJpaRepository.save(st);
-            return st;
-        }
-        catch(Exception e)
-        {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No student with that ID");
-        }
-    }
-
-    public ArrayList<Student> getStudentsByGrade(int grade) {
-        return studentJpaRepository.findByGrade(grade);
-    }    
+ 
 
     /*------------------------------------------------------------------------------------------------------
      * -----------------------------------------------------------------------------------------------------
@@ -195,4 +132,76 @@ public class PrincipalServices {
 
         return grade+" grade is removed from school.";
     }
+
+
+    //-----------------------------------------------------------------------------------------
+
+
+    @Autowired
+    private StudentJpaRepository studentJpaRepository;
+
+    public Student addStudent(Student st)
+    {
+        Grade stGrade=st.getGradedetails();
+        int gradeid=stGrade.getGrade();
+        Grade updatedGrade=getGradeById(gradeid);
+        st.setGradedetails(updatedGrade);
+        studentJpaRepository.save(st);
+        return st;
+    }
+    
+    public ArrayList<Student> getAllStudents()
+    {
+        List<Student> l=studentJpaRepository.findAll();
+        ArrayList<Student> al=new ArrayList<>(l);
+
+        return al;
+    }
+
+    public Student getStudentById(int studentid)
+    {
+        try{
+            Student st=studentJpaRepository.findById(studentid).get();
+            return st;
+        }
+        catch(Exception e)
+        {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No student with that ID");
+        }
+    }
+
+    public String removeStudent(int studentid)
+    {
+        try{
+            Student st=getStudentById(studentid);
+            String name=st.getName();
+            studentJpaRepository.deleteById(studentid);
+
+            return name+" is transferred";
+        }
+        catch(Exception e)
+        {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No student with that ID");
+        }
+    }
+
+    public Student updateStudent(int studentid, Student student)
+    {
+        try{
+            Student st=getStudentById(studentid);
+            if(student.getName()!=null) st.setName(student.getName());
+            if(student.getAge()!=0) st.setAge(student.getAge());
+
+            studentJpaRepository.save(st);
+            return st;
+        }
+        catch(Exception e)
+        {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No student with that ID");
+        }
+    }
+
+    public ArrayList<Student> getStudentsByGrade(int grade) {
+        return studentJpaRepository.findByGrade(grade);
+    }   
 }

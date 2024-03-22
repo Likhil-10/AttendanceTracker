@@ -1,6 +1,6 @@
 package com.example.attendancetracker.models;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import jakarta.persistence.*;
 
@@ -19,20 +19,32 @@ public class Student {
     @Column(name = "age")
     private int age;
 
-    @Column(name = "grade")
+    @Column(name = "class")
     private int grade;
 
-    @Transient
-    private ArrayList<AttendanceRecord> attendanceBook=new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "gradedetails")
+    private Grade gradedetails;
+
+    public Grade getGradedetails() {
+        return gradedetails;
+    }
+
+    public void setGradedetails(Grade gradedetails) {
+        this.gradedetails = gradedetails;
+    }
+    // @Transient
+    // private ArrayList<AttendanceRecord> attendanceBook=new ArrayList<>();
 
     public Student(){}
 
-    public Student(int id, String name, int age, int grade) {
+    public Student(int id, String name, int age, int grade, Grade gradedetails) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.grade=grade;
-        this.attendanceBook= new ArrayList<AttendanceRecord>();
+        this.gradedetails=gradedetails;
+        // this.attendanceBook= new ArrayList<AttendanceRecord>();
     }
 
     public int getId()
@@ -71,14 +83,13 @@ public class Student {
         this.grade=grade;
     }
 
-    public ArrayList<AttendanceRecord> getAttendanceRecord()
-    {
-        return this.attendanceBook;
-    }
-    public void setAttendanceRecord(AttendanceRecord record)
-    {
-        this.attendanceBook.add(record);
-    }
-    
-    
+    // public ArrayList<AttendanceRecord> getAttendanceRecord()
+    // {
+    //     return this.attendanceBook;
+    // }
+    // public void setAttendanceRecord(AttendanceRecord record)
+    // {
+    //     this.attendanceBook.add(record);
+    // }
+
 }
