@@ -1,4 +1,6 @@
-package com.example.attendancetracker.models;
+package io.javabrains.springbootsecurity.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 //import java.util.ArrayList;
 
@@ -26,15 +28,16 @@ public class Student {
     @JoinColumn(name = "gradedetails")
     private Grade gradedetails;
 
-    public Grade getGradedetails() {
-        return gradedetails;
-    }
+    @ManyToOne
+    @JoinColumn(name = "parentid")
+    @JsonIgnoreProperties("students")
+    private Parent parent;
 
-    public void setGradedetails(Grade gradedetails) {
-        this.gradedetails = gradedetails;
-    }
+    
     // @Transient
     // private ArrayList<AttendanceRecord> attendanceBook=new ArrayList<>();
+
+    
 
     public Student(){}
 
@@ -83,13 +86,19 @@ public class Student {
         this.grade=grade;
     }
 
-    // public ArrayList<AttendanceRecord> getAttendanceRecord()
-    // {
-    //     return this.attendanceBook;
-    // }
-    // public void setAttendanceRecord(AttendanceRecord record)
-    // {
-    //     this.attendanceBook.add(record);
-    // }
+    public Grade getGradedetails() {
+        return gradedetails;
+    }
+    public void setGradedetails(Grade gradedetails) {
+        this.gradedetails = gradedetails;
+    }
+    
+    public Parent getParent() {
+        return parent;
+    }
+
+    public void setParent(Parent parent) {
+        this.parent = parent;
+    }
 
 }

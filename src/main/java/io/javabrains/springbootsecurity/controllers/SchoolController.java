@@ -1,4 +1,4 @@
-package com.example.attendancetracker.controllers;
+package io.javabrains.springbootsecurity.controllers;
 
 import java.util.ArrayList;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.attendancetracker.models.Principal;
-import com.example.attendancetracker.services.SchoolServices;
+import io.javabrains.springbootsecurity.models.Principal;
+import io.javabrains.springbootsecurity.services.SchoolServices;
 
 @RestController
 public class SchoolController {

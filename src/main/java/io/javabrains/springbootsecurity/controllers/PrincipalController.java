@@ -1,4 +1,4 @@
-package com.example.attendancetracker.controllers;
+package io.javabrains.springbootsecurity.controllers;
 
 import java.util.ArrayList;
 
@@ -12,15 +12,21 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.attendancetracker.models.Student;
-import com.example.attendancetracker.models.Teacher;
-import com.example.attendancetracker.services.PrincipalServices;
+import io.javabrains.springbootsecurity.models.Student;
+import io.javabrains.springbootsecurity.models.Teacher;
+import io.javabrains.springbootsecurity.services.PrincipalServices;
 
 @RestController
 public class PrincipalController {
     
     @Autowired
     private PrincipalServices principalServices;
+
+    @GetMapping("/")
+    public String welcome()
+    {
+        return "Welcome";
+    }
 
     @PostMapping("/principal/addstudent")
     public Student addstudent(@RequestBody Student student)

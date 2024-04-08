@@ -1,6 +1,5 @@
-package com.example.attendancetracker.services;
+package io.javabrains.springbootsecurity.services;
 
-import com.example.attendancetracker.models.Teacher;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,11 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.attendancetracker.models.Grade;
-import com.example.attendancetracker.models.Student;
-import com.example.attendancetracker.repositories.GradeJpaRepository;
-import com.example.attendancetracker.repositories.StudentJpaRepository;
-import com.example.attendancetracker.repositories.TeacherJpaRepository;
+import io.javabrains.springbootsecurity.models.Grade;
+import io.javabrains.springbootsecurity.models.Student;
+import io.javabrains.springbootsecurity.models.Teacher;
+import io.javabrains.springbootsecurity.repositories.GradeJpaRepository;
+import io.javabrains.springbootsecurity.repositories.StudentJpaRepository;
+import io.javabrains.springbootsecurity.repositories.TeacherJpaRepository;
 
 @Service
 public class PrincipalServices {

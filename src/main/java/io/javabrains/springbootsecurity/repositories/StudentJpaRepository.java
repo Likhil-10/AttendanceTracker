@@ -1,11 +1,11 @@
-package com.example.attendancetracker.repositories;
+package io.javabrains.springbootsecurity.repositories;
 
 import java.util.ArrayList;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.attendancetracker.models.Student;
+import io.javabrains.springbootsecurity.models.Student;
 
 @Repository
 public interface StudentJpaRepository extends JpaRepository<Student, Integer> {

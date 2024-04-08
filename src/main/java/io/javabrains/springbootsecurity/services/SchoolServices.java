@@ -1,4 +1,4 @@
-package com.example.attendancetracker.services;
+package io.javabrains.springbootsecurity.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.attendancetracker.models.Principal;
-import com.example.attendancetracker.repositories.SchoolJpaRepository;
+import io.javabrains.springbootsecurity.models.Principal;
+import io.javabrains.springbootsecurity.repositories.SchoolJpaRepository;
 
 @Service
 public class SchoolServices {

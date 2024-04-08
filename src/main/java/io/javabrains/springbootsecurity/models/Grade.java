@@ -1,4 +1,4 @@
-package com.example.attendancetracker.models;
+package io.javabrains.springbootsecurity.models;
 
 import jakarta.persistence.*;
 
